@@ -6,10 +6,15 @@ This project is a **Price Comparison Web Application** that helps users find the
 The goal of this project is to make online shopping faster, easier, and more cost-effective.
 
 **🚀 Features**
-🔍 Search for products بسهولة
+
+🔍 Search for products 
+
 💰 Compare prices across multiple sources
+
 👤 User authentication (Login / Register)
+
 ⚡ Fast and efficient data handling
+
 📊 Clean and simple user interface
 
 **🛠️ Tech Stack**
@@ -19,6 +24,7 @@ Data Handling: Pandas
 Database: (Add if you used one, e.g., SQLite / MySQL)
 
 **📂 Project Structure**
+
 Price-Comparison/
 
 │── static/          # CSS, JS, Images  
@@ -29,31 +35,39 @@ Price-Comparison/
 
 **⚙️ Installation**
 
-Clone the repository
+1.Clone the repository
 git clone https://github.com/your-username/price-comparison.git
 
-Navigate to the project folder
+2.Navigate to the project folder
 cd price-comparison
 
-Install dependencies
+3.Install dependencies
 pip install -r requirements.txt
 
-Run the application
+4.Run the application
 python app.py
 
-Open in browser
+5.Open in browser
 http://127.0.0.1:5000/
 
 **💡 How It Works**
+
 >User enters a product name
->The system processes the dataset
+
+>The system processes the datases
+
 >Prices from different sources are compared
+
 >Results are displayed in a simple format
 
 **🎯 Future Improvements**
+
 1.Add real-time API integration
+
 2.Improve UI/UX design
+
 3.Add filters (price range, ratings, etc.)
+
 4.Deploy the project online
 
 **📌 Conclusion**
