@@ -20,6 +20,7 @@ Database: (Add if you used one, e.g., SQLite / MySQL)
 
 **📂 Project Structure**
 Price-Comparison/
+
 │── static/          # CSS, JS, Images  
 │── templates/       # HTML files  
 │── app.py           # Main Flask application  
@@ -27,28 +28,33 @@ Price-Comparison/
 │── requirements.txt # Dependencies 
 
 **⚙️ Installation**
+
 Clone the repository
 git clone https://github.com/your-username/price-comparison.git
+
 Navigate to the project folder
 cd price-comparison
+
 Install dependencies
 pip install -r requirements.txt
+
 Run the application
 python app.py
+
 Open in browser
 http://127.0.0.1:5000/
 
 **💡 How It Works**
-User enters a product name
-The system processes the dataset
-Prices from different sources are compared
-Results are displayed in a simple format
+>User enters a product name
+>The system processes the dataset
+>Prices from different sources are compared
+>Results are displayed in a simple format
 
 **🎯 Future Improvements**
-Add real-time API integration
-Improve UI/UX design
-Add filters (price range, ratings, etc.)
-Deploy the project online
+1.Add real-time API integration
+2.Improve UI/UX design
+3.Add filters (price range, ratings, etc.)
+4.Deploy the project online
 
 **📌 Conclusion**
 
