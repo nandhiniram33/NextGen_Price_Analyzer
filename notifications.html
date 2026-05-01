@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notifications - NextGen Price Analyzer</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="nav">
+    <div class="nav-inner">
+        <div style="flex:1"></div>
+        <div class="nav-center">
+            <div class="nav-title">
+                <a class="brand" href="/">NextGen Price Analyzer</a>
+            </div>
+            <div class="nav-greeting">
+                {% if session.user %}
+                    <span class="muted">Hello, {{ session.user }}</span>
+                    <a href="/logout" class="btn small">Logout</a>
+                {% else %}
+                    <a href="/login" class="btn">Login</a>
+                {% endif %}
+            </div>
+        </div>
+        <nav style="flex:1; text-align:right"></nav>
+    </div>
+</header>
+
+<main class="container">
+    <h2>Notifications</h2>
+
+    {% if notifications and notifications|length > 0 %}
+    <form method="post">
+        <button type="submit" class="btn danger">Clear notifications</button>
+    </form>
+    <ul class="notifications">
+        {% for n in notifications %}
+        <li>
+            <div><b>Type:</b> {{ n.type }}</div>
+            <div><b>Product/Site:</b> {{ n.product_site }}</div>
+            {% if n.old_price is defined %}
+            <div><b>Old:</b> ₹{{ n.old_price|int }} — <b>New:</b> ₹{{ n.new_price|int }}</div>
+            <div><b>Drop:</b> {{ n.drop_pct }}%</div>
+            {% elif n.discount_percent is defined %}
+            <div><b>Discount:</b> {{ n.discount_percent }}%</div>
+            {% endif %}
+            <div class="muted small">At {{ n.time }}</div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No notifications found.</p>
+    {% endif %}
+</main>
+
+<footer class="footer">Built with ❤️ — NextGen Price Analyzer</footer>
+</body>
+</html>

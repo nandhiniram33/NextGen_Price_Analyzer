@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login · NextGen Price Analyzer</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main class="auth-page">
+    <div class="auth-content">
+        <div class="auth-header">
+            <h1 class="brand large">NextGen Price Analyzer</h1>
+            <p class="muted subtitle">Find the best prices across Indian retailers</p>
+        </div>
+
+        <div class="auth-card">
+            <h2>Welcome back</h2>
+            <p class="muted">Sign in to compare prices faster and save your searches.</p>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="flashes">
+                {% for category, msg in messages %}
+                <div class="flash {{ category }}">{{ msg }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <form method="post" class="login-form">
+                <label>Username</label>
+                <input type="text" name="username" required>
+                <label>Password</label>
+                <input type="password" name="password" required>
+                <button type="submit" class="btn primary">Sign in</button>
+            </form>
+
+            <p class="small muted">Don't have an account? <a href="/register" style="color: var(--accent);">Register here</a></p>
+        </div>
+    </div>
+
+    <footer class="footer-links">
+        <nav>
+            <a href="/">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+            <a href="#more">More</a>
+        </nav>
+        <p class="credit">Built with ❤️ — NextGen Price Analyzer</p>
+    </footer>
+</main>
+</body>
+</html>

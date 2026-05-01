@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NextGen Price Analyzer</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="nav">
+    <div class="nav-inner">
+        <div style="flex:1"></div>
+        <div class="nav-center">
+            <div class="nav-title">
+                <a class="brand" href="/">NextGen Price Analyzer</a>
+            </div>
+            <div class="nav-greeting">
+                {% if session.user %}
+                    <span class="muted">Hello, {{ session.user }}</span>
+                    <a href="/notifications" class="btn small">Notifications ({{ notif_count or 0 }})</a>
+                    <a href="/logout" class="btn small">Logout</a>
+                {% else %}
+                    <a href="/login" class="btn">Login</a>
+                {% endif %}
+            </div>
+        </div>
+        <nav style="flex:1; text-align:right">
+            <!-- reserved for future right-side links -->
+        </nav>
+    </div>
+</header>
+
+<main class="hero">
+    <div class="hero-inner">
+        <h1 class="brand-hero">NextGen Price Analyzer</h1>
+        <h1>Find the best price in seconds</h1>
+        <p class="muted">Search across multiple Indian retailers and compare prices, ratings and warranty.</p>
+        <form method="POST" class="search-form">
+            <input type="text" name="product" placeholder="Search product (e.g. Apple iPhone 14 Pro)" required>
+            <button type="submit" class="btn primary">Compare prices</button>
+        </form>
+    </div>
+</main>
+
+<section class="results container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="flashes">
+        {% for category, msg in messages %}
+        <div class="flash {{ category }}">{{ msg }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    {% for p in products %}
+    <div class="product-card">
+        <div class="product-header">
+            <div class="product-title">
+                <h3>{{ p.product_name }}</h3>
+                <p class="muted"><b>Brand:</b> {{ p.brand }}</p>
+                {% if p.specs %}
+                <div class="specs">
+                    {% if p.specs.model %}<span><b>Model:</b> {{ p.specs.model }}</span>{% endif %}
+                    {% if p.specs.ram %}<span><b>RAM:</b> {{ p.specs.ram }}</span>{% endif %}
+                    {% if p.specs.storage %}<span><b>Storage:</b> {{ p.specs.storage }}</span>{% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <table class="price-table">
+            <thead>
+                <tr>
+                    <th>Website</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Warranty</th>
+                    <th>Discount</th>
+                    <th>Quality</th>
+                    <th>Reviews</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in p.entries_ordered %}
+                <tr>
+                    <td>
+                        {% if e.product_link %}
+                        <a href="{{ e.product_link }}" target="_blank" rel="noopener noreferrer">{{ e.website }}</a>
+                        {% else %}
+                        {{ e.website }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if e.price == 'N/A' %}
+                            N/A
+                        {% else %}
+                            {{ e.price_display }}
+                            {% if e.delta_display %}
+                                <div class="price-indicator {% if e.delta_type == 'down' %}down{% elif e.delta_type == 'up' %}up{% endif %}">
+                                    {% if e.delta_type == 'down' %}
+                                        ⬇️ Price dropped {{ e.delta_display }}
+                                    {% elif e.delta_type == 'up' %}
+                                        ⬆️ Price increased {{ e.delta_display }}
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                    <td>{{ e.rating }}</td>
+                    <td>{{ e.warranty_years }}</td>
+                    <td>
+                        {% if e.discount_percent and e.discount_percent > 0 %}
+                            {{ e.discount_percent }}%
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if e.quality %}
+                            {{ e.quality }} ({{ e.quality_score or 0 }}/100)
+                        {% elif e.quality_score %}
+                            {{ e.quality_score }} / 100
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if e.reviews_count and e.reviews_count > 0 %}
+                            {{ e.reviews_count }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                </tr>
+                {% if e.features and e.features|length > 0 %}
+                <tr class="feature-row">
+                    <td colspan="8"><b>Features:</b> {{ e.features|join(', ') }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+</section>
+
+<footer class="footer">Built with ❤️ — NextGen Price Analyzer</footer>
+</body>
+</html>

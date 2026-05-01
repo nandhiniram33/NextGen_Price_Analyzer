@@ -1,0 +1,4 @@
+cd "d:\Price comparison"
+& "d:\Price comparison\.venv\Scripts\Activate.ps1"
+cd "d:\Price comparison"; & ".\.venv\Scripts\Activate.ps1"; $env:USE_WAITRESS = "1"; $env:PORT = "5000"; python app.py
+$env:USE_WAITRESS = "1"; $env:PORT = "5000"; python [app.py](http://_vscodecontentref_/5)
