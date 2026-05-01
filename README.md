@@ -1,4 +1,5 @@
 # 🛒 Price Comparison Web Application
+
 **📌 Overview**
 
 This project is a **Price Comparison Web Application** that helps users find the best deals by comparing product prices across different platforms. Instead of checking multiple websites manually, users can search once and view price variations in one place.
@@ -19,13 +20,13 @@ The goal of this project is to make online shopping faster, easier, and more cos
 
 **🛠️ Tech Stack**
 
-Backend: Python, Flask
+~Backend: Python, Flask
 
-Frontend: HTML, CSS, JavaScript
+~Frontend: HTML, CSS, JavaScript
 
-Data Handling: Pandas
+~Data Handling: Pandas
 
-Database: (Add if you used one, e.g., SQLite / MySQL)
+~Database: (Add if you used one, e.g., SQLite / MySQL)
 
 **📂 Project Structure**
 
