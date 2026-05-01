@@ -18,9 +18,13 @@ The goal of this project is to make online shopping faster, easier, and more cos
 📊 Clean and simple user interface
 
 **🛠️ Tech Stack**
+
 Backend: Python, Flask
+
 Frontend: HTML, CSS, JavaScript
+
 Data Handling: Pandas
+
 Database: (Add if you used one, e.g., SQLite / MySQL)
 
 **📂 Project Structure**
@@ -36,19 +40,24 @@ Price-Comparison/
 **⚙️ Installation**
 
 1.Clone the repository
-git clone https://github.com/your-username/price-comparison.git
+
+>git clone https://github.com/your-username/price-comparison.git
 
 2.Navigate to the project folder
-cd price-comparison
+
+>cd price-comparison
 
 3.Install dependencies
-pip install -r requirements.txt
+
+>pip install -r requirements.txt
 
 4.Run the application
-python app.py
+
+>python app.py
 
 5.Open in browser
-http://127.0.0.1:5000/
+
+>http://127.0.0.1:5000/
 
 **💡 How It Works**
 
